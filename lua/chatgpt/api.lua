@@ -227,9 +227,9 @@ end
 function Api.setup()
   loadApiHost("OPENAI_API_HOST", "OPENAI_API_HOST", "api_host_cmd", function(value)
     Api.OPENAI_API_HOST = value
-    Api.COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/completions"
-    Api.CHAT_COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/chat/completions"
-    Api.EDITS_URL = "https://" .. Api.OPENAI_API_HOST .. "/edits"
+    Api.COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/completions?api-version=2023-07-01-preview"
+    Api.CHAT_COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/chat/completions?api-version=2023-07-01-preview"
+    Api.EDITS_URL = "https://" .. Api.OPENAI_API_HOST .. "/edits?api-version=2023-07-01-preview"
   end, "api.openai.com")
 
   loadApiKey("OPENAI_API_KEY", "OPENAI_API_KEY", "api_key_cmd", function(value)
