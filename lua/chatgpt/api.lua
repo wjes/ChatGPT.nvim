@@ -28,8 +28,8 @@ function Api.chat_completions(custom_params, cb, should_stop)
         "-H",
         "Content-Type: application/json",
         "-H",
-        -- "api-key: " .. Api.OPENAI_API_KEY,
-        "Authorization: Bearer " .. Api.OPENAI_API_KEY,
+        "api-key: " .. Api.OPENAI_API_KEY,
+        -- "Authorization: Bearer " .. Api.OPENAI_API_KEY,
         "-d",
         vim.json.encode(params),
       },
@@ -104,8 +104,8 @@ function Api.make_call(url, params, cb)
         "-H",
         "Content-Type: application/json",
         "-H",
-        -- "api-key: " .. Api.OPENAI_API_KEY,
-        "Authorization: Bearer " .. Api.OPENAI_API_KEY,
+        "api-key: " .. Api.OPENAI_API_KEY,
+        -- "Authorization: Bearer " .. Api.OPENAI_API_KEY,
         "-d",
         "@" .. TMP_MSG_FILENAME,
       },
@@ -238,8 +238,6 @@ function Api.setup()
 end
 
 function Api.exec(cmd, args, on_stdout_chunk, on_complete, should_stop, on_stop)
-  vim.notify(Api.CHAT_COMPLETIONS_URL, vim.log.levels.INFO)
-
   local stdout = vim.loop.new_pipe()
   local stderr = vim.loop.new_pipe()
   local stderr_chunks = {}
