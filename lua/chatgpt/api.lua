@@ -238,6 +238,7 @@ function Api.setup()
 end
 
 function Api.exec(cmd, args, on_stdout_chunk, on_complete, should_stop, on_stop)
+  vim.notify(args, vim.log.levels.INFO)
   local stdout = vim.loop.new_pipe()
   local stderr = vim.loop.new_pipe()
   local stderr_chunks = {}
