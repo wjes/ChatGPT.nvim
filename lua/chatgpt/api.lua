@@ -28,7 +28,8 @@ function Api.chat_completions(custom_params, cb, should_stop)
         "-H",
         "Content-Type: application/json",
         "-H",
-        "Authorization: Bearer " .. Api.OPENAI_API_KEY,
+        "api-key: " .. Api.OPENAI_API_KEY,
+        -- "Authorization: Bearer " .. Api.OPENAI_API_KEY,
         "-d",
         vim.json.encode(params),
       },
@@ -103,7 +104,8 @@ function Api.make_call(url, params, cb)
         "-H",
         "Content-Type: application/json",
         "-H",
-        "Authorization: Bearer " .. Api.OPENAI_API_KEY,
+        "api-key: " .. Api.OPENAI_API_KEY,
+        -- "Authorization: Bearer " .. Api.OPENAI_API_KEY,
         "-d",
         "@" .. TMP_MSG_FILENAME,
       },
@@ -225,9 +227,9 @@ end
 function Api.setup()
   loadApiHost("OPENAI_API_HOST", "OPENAI_API_HOST", "api_host_cmd", function(value)
     Api.OPENAI_API_HOST = value
-    Api.COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/v1/completions"
-    Api.CHAT_COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/v1/chat/completions"
-    Api.EDITS_URL = "https://" .. Api.OPENAI_API_HOST .. "/v1/edits"
+    Api.COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/completions"
+    Api.CHAT_COMPLETIONS_URL = "https://" .. Api.OPENAI_API_HOST .. "/chat/completions"
+    Api.EDITS_URL = "https://" .. Api.OPENAI_API_HOST .. "/edits"
   end, "api.openai.com")
 
   loadApiKey("OPENAI_API_KEY", "OPENAI_API_KEY", "api_key_cmd", function(value)
